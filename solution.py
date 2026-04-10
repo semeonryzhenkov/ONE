@@ -1,20 +1,23 @@
-with open('path.txt') as f:
-    s = f.read().strip()
+import sqlite3
+import sys
 
-max_len = 0
-max_idx = 0
-cur_len = 0
+f = sys.argv[1]
+h = int(sys.argv[2])
+d = int(sys.argv[3])
 
-for i, c in enumerate(s):
-    if c == 'U':
-        cur_len += 1
-    else:
-        if cur_len > max_len:
-            max_len = cur_len
-            max_idx = i - cur_len
-        cur_len = 0
+con = sqlite3.connect(f)
+cur = con.cursor()
 
-if cur_len > max_len:
-    max_idx = len(s) - cur_len
+sql = """
+SELECT DISTINCT t.type
+FROM AlienTypes t
+JOIN Dangers d ON t.id = d.type_id
+WHERE t.height >= ? AND d.danger >= ?
+ORDER BY d.danger DESC
+"""
 
-print(max_idx)
+cur.execute(sql, (h, d))
+for r in cur.fetchall():
+    print(r[0])
+
+con.close()
