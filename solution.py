@@ -1,6 +1,9 @@
 import sqlite3
 import sys
 
+if len(sys.argv) < 4:
+    sys.exit(1)
+
 f = sys.argv[1]
 h = int(sys.argv[2])
 d = int(sys.argv[3])
