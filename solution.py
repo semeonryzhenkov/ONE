@@ -12,7 +12,7 @@ sql = """
 SELECT DISTINCT t.type
 FROM AlienTypes t
 JOIN Dangers d ON t.id = d.type_id
-WHERE t.height >= ? AND d.danger >= ?
+WHERE t.height > ? AND d.danger >= ?
 ORDER BY d.danger DESC
 """
 
