@@ -1,0 +1,22 @@
+{
+    "Broadway": {
+        "duration": 10,
+        "height": 30,
+        "reliability": 0
+    },
+    "Old Faithful": {
+        "duration": 7,
+        "height": 16,
+        "reliability": 7
+    },
+    "Yellowstone": {
+        "duration": 10,
+        "height": 55,
+        "reliability": 6
+    },
+    "Yosemite": {
+        "duration": 31,
+        "height": 2,
+        "reliability": 7
+    }
+}
