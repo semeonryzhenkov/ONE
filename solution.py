@@ -1,27 +1,10 @@
-#!/usr/bin/env python3
-
-# Читаем траекторию из файла
-with open('path.txt', 'r') as f:
-    trajectory = f.read().strip()
-
-max_len = 0
-max_start = -1
-
-i = 0
-while i < len(trajectory):
-    if trajectory[i] == 'U':
-        # Начало последовательности U
-        start = i
-        length = 0
-        while i < len(trajectory) and trajectory[i] == 'U':
-            length += 1
-            i += 1
-        
-        # Проверяем, является ли эта последовательность максимальной
-        if length > max_len:
-            max_len = length
-            max_start = start
-    else:
-        i += 1
-
-print(max_start)
+p=open("path.txt").read()
+m,i,b,c=0,0,-1,0
+for x in p:
+ if x=="U":c+=1
+ else:
+  if c>m:m=c;b=i-c
+  c=0
+ i+=1
+if c>m:b=i-c
+print(b)
